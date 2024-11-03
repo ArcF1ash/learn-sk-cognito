@@ -28,8 +28,8 @@
                 throw new Error('Unexpected response from server');
             }
         } catch (error) {
-            console.error('Login error:', error);
-            alert('Login failed. Please check your credentials');
+            console.error('Sign-in error:', error);
+            alert('Sign-in failed. Please check your credentials');
         }
     }
 
@@ -73,12 +73,12 @@
         <label for="password">Confirm Password</label>
         <input type="password" bind:value={confirmPassword} placeholder="Confirm New Password" required />
 
-        <button type="submit">Login</button>
+        <button type="submit">Set Password</button>
     </form>
 {:else}
     <form on:submit|preventDefault={handleSubmit}>
         <hgroup>
-            <h2>Login</h2>
+            <h2>Sign In</h2>
         </hgroup>
         <label for="username">Email</label>
         <input type="email" bind:value={email} placeholder="Email" required />
@@ -86,6 +86,6 @@
         <label for="password">Password</label>
         <input type="password" bind:value={password} placeholder="Password" required />
 
-        <button type="submit">Login</button>
+        <button type="submit">Sign In</button>
     </form>
 {/if}
