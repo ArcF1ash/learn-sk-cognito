@@ -1,0 +1,1 @@
+<h1>This is protected content. You are seeing this because you are logged in.</h1>
