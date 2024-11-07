@@ -13,7 +13,7 @@ export const handle: Handle = async ({ event, resolve }) => {
             const user: GetUserCommandOutput = await client.send(command);
 
             event.locals.user = {
-                email: user.Username ?? "",
+                username: user.Username ?? "",
                 attributes: user.UserAttributes!.reduce((acc, attr) => {
                     acc[attr.Name!] = attr.Value!;
                     return acc;
@@ -23,14 +23,14 @@ export const handle: Handle = async ({ event, resolve }) => {
         } catch (error) {
             console.error('Token validation failed:', error);
             event.locals.user = { 
-                email: "",
+                username: "",
                 attributes: {} as Record<string, string>,
                 isAuthenticated: false 
             };
         }
     } else {
         event.locals.user = { 
-            email: "",
+            username: "",
             attributes: {} as Record<string, string>,
             isAuthenticated: false 
         };

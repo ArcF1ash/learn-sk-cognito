@@ -5,7 +5,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			user: {
-				email: string;
+				username: string;
 				attributes: Record<string, string>;
 				isAuthenticated: boolean;
 			} | null;
