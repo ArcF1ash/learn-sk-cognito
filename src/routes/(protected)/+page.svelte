@@ -7,7 +7,7 @@
         try {
             const response = await fetch('/api/auth/signout', { method: 'POST' });
             if (response.ok) {
-                goto('/signin');
+                goto('/auth/sign-in');
             }
         } catch (error) {
             console.error('Sign-out error:', error);

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import type { ActionData } from "./$types";
+    import type { ActionData } from "../$types";
     import { enhance } from '$app/forms';
 
     let { form }: { form: ActionData } = $props();
@@ -8,7 +8,7 @@
     $effect(() => {
         if (form?.success && form?.id === 'confirm' ) {
             // Navigate back to sign-in if password is successfully reset
-            setTimeout(() =>  goto('/signin'), 2000);
+            setTimeout(() =>  goto('/auth/sign-in'), 2000);
         } 
     });
 
@@ -69,7 +69,7 @@
                 </div>
             </form>
             <div class="mt-6">
-                <button onclick="{ () => goto('/') }" class="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold  text-indigo-600 shadow-sm hover:bg-indigo-100 ring-1 ring-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</button>
+                <button onclick="{ () => goto('/auth/sign-in') }" class="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold  text-indigo-600 shadow-sm hover:bg-indigo-100 ring-1 ring-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</button>
             </div>
             {/if}
         </div>
