@@ -20,7 +20,7 @@
     <div class="w-full lg:max-w-sm bg-white lg:shadow-md lg:rounded lg:mt-12 p-8">
         <h2 class="text-center text-2xl/9 font-bold text-gray-900">Reset your password</h2>
         <div class="mt-10">
-            {#if form?.success}
+        {#if form?.success}
             <!-- Password Reset Confirmation Form -->
             <form 
                 method="POST"
@@ -88,7 +88,7 @@
             <div class="mt-6">
                 <button onclick="{ () => goto('/auth/sign-in') }" class="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold  text-indigo-600 shadow-sm hover:bg-indigo-100 ring-1 ring-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</button>
             </div>
-            {/if}
+        {/if}
         </div>
     </div>
 </div>
