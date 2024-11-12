@@ -1,14 +1,14 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import type { ActionData } from "../$types";
-    import { enhance } from '$app/forms';
+    import { applyAction, enhance } from '$app/forms';
 
     let { form }: { form: ActionData } = $props();
 
     $effect(() => {
-        if (form?.success && form?.id === 'confirm' ) {
+        if (form?.success && form?.id === 'confirmResetPassword' ) {
             // Navigate back to sign-in if password is successfully reset
-            setTimeout(() =>  goto('/auth/sign-in'), 2000);
+            goto('/auth/sign-in');
         } 
     });
 
@@ -22,8 +22,16 @@
         <div class="mt-10">
             {#if form?.success}
             <!-- Password Reset Confirmation Form -->
-            <form method="POST" use:enhance action="?/confirmResetPassword" class="space-y-6">
-                {#if form?.success && form?.id === 'confirm'}<p class="text-center text-green-500 mb-6">Password successfully reset!. Redirecting to sign-in...</p>{/if}
+            <form 
+                method="POST"
+                use:enhance={()=> {
+                    return async ({ result }) => {
+                       await applyAction(result);
+                    };
+                }} 
+                action="/auth?/confirmResetPassword"
+                class="space-y-6"
+            >
                 <div>
                     <label for="code" class="block text-sm/6 font-medium text-gray-900">Confirmation Code</label>
                     <div class="mt-2">
@@ -52,7 +60,16 @@
             </form>
             {:else}
             <!-- Password Reset Request Form -->
-            <form method="POST" use:enhance action="?/requestResetPassword" class="space-y-6">
+            <form 
+                method="POST"
+                use:enhance={()=> {
+                    return async ({ result }) => {
+                       await applyAction(result);
+                    };
+                }} 
+                action="/auth?/requestResetPassword"
+                class="space-y-6"
+            >
                 <div>
                     <p class="text-center">To reset your password, enter your email address below and a confirmation code will be emailed to you shortly.</p>
                 </div>
